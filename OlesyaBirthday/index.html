@@ -1,0 +1,2807 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Олеся.exe — 20 лет 🎂</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background: #090014;
+    color: white;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 20% 20%, #4b006e 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #003c5c 0%, transparent 30%),
+        #090014;
+}
+
+button {
+    font: inherit;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.particle {
+    position: absolute;
+    font-size: 24px;
+    animation: fly 1.8s ease-out forwards;
+}
+
+@keyframes fly {
+
+    0% {
+        transform:
+            translate(0,0)
+            scale(.5)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(
+                calc((var(--x) - .5) * 500px),
+                calc((var(--y) - .5) * 700px)
+            )
+            scale(1.5)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+.screen {
+
+    display: none;
+
+    min-height: 100vh;
+
+    padding:
+        30px 18px;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.container {
+
+    width:
+        min(850px,100%);
+
+    text-align: center;
+}
+
+.card {
+
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    border-radius:
+        28px;
+
+    padding:
+        35px 25px;
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.4);
+}
+
+h1 {
+
+    font-size:
+        clamp(38px,8vw,80px);
+
+    margin:
+        10px 0 20px;
+}
+
+h2 {
+
+    font-size:
+        clamp(28px,6vw,50px);
+}
+
+h3 {
+    font-size:25px;
+}
+
+p {
+
+    font-size:18px;
+
+    line-height:1.6;
+
+    color:#ddd;
+}
+
+.gradient {
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4ecd,
+            #8b7bff,
+            #46eaff
+        );
+
+    -webkit-background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+.btn {
+
+    border:none;
+
+    padding:
+        17px 28px;
+
+    margin:
+        8px;
+
+    border-radius:
+        16px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3cac,
+            #784cff
+        );
+
+    box-shadow:
+        0 8px 30px
+        rgba(150,50,255,.35);
+
+    transition:.2s;
+}
+
+.btn:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+}
+
+.btn:active {
+
+    transform:
+        scale(.96);
+}
+
+.secondary {
+
+    background:
+        rgba(255,255,255,.1);
+}
+
+.option {
+
+    width:
+        min(550px,100%);
+
+    display:block;
+
+    margin:
+        12px auto;
+}
+
+.small {
+
+    font-size:14px;
+
+    color:#aaa;
+}
+
+
+/* MAP */
+
+.map {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+
+    margin:
+        30px 0;
+}
+
+.map-node {
+
+    padding:
+        15px 8px;
+
+    border-radius:
+        16px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    opacity:.45;
+
+    transition:.3s;
+}
+
+.map-node.active {
+
+    opacity:1;
+
+    border-color:
+        #ff55d9;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,50,220,.25);
+}
+
+.map-node.done {
+
+    opacity:1;
+
+    background:
+        rgba(100,255,180,.12);
+}
+
+.map-number {
+
+    font-size:28px;
+
+    display:block;
+}
+
+
+/* PROGRESS */
+
+.progress {
+
+    height:13px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:
+        25px 0;
+}
+
+.progress-bar {
+
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4ecd,
+            #47eaff
+        );
+
+    transition:
+        width .3s;
+}
+
+
+/* PHOTO */
+
+.photo-frame {
+
+    margin:
+        25px auto;
+
+    width:
+        min(420px,90%);
+
+    padding:10px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff42c8,
+            #655bff,
+            #34eaff
+        );
+}
+
+.photo-frame img {
+
+    width:100%;
+
+    display:block;
+
+    border-radius:15px;
+
+    max-height:500px;
+
+    object-fit:cover;
+}
+
+.photo-caption {
+
+    font-size:18px;
+
+    margin-top:12px;
+
+    color:#fff;
+}
+
+
+/* BROTHER GAME */
+
+.brother-area {
+
+    position:relative;
+
+    height:320px;
+
+    margin:
+        25px 0;
+
+    border-radius:22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    overflow:hidden;
+
+    background:
+        rgba(0,0,0,.15);
+}
+
+.brother-button {
+
+    position:absolute;
+
+    padding:
+        18px 25px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3cac,
+            #784cff
+        );
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.15s;
+}
+
+
+/* MEME */
+
+.meme {
+
+    margin:
+        20px auto;
+
+    padding:
+        20px;
+
+    max-width:600px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    font-size:20px;
+
+    min-height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+/* RED BUTTON */
+
+.red-zone {
+
+    margin:
+        30px auto;
+
+    padding:
+        35px;
+
+    border-radius:25px;
+
+    background:
+        rgba(255,0,0,.08);
+
+    border:
+        1px solid
+        rgba(255,0,0,.3);
+}
+
+.red-button {
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    border:
+        8px solid
+        #44000d;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ff6680,
+            #e0002d 50%,
+            #720018
+        );
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 20px 50px
+        rgba(255,0,50,.35),
+
+        inset 0 -15px 20px
+        rgba(0,0,0,.3);
+
+    transition:.15s;
+}
+
+.red-button:active {
+
+    transform:
+        scale(.9);
+}
+
+
+/* TERMINAL */
+
+.terminal {
+
+    text-align:left;
+
+    background:#020403;
+
+    border:
+        1px solid
+        #27ff65;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    color:#27ff65;
+
+    font-family:monospace;
+
+    min-height:260px;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,255,80,.15);
+}
+
+.terminal-line {
+
+    margin:8px 0;
+}
+
+
+/* GIFT */
+
+.gift-grid {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
+    margin:
+        25px auto;
+
+    max-width:500px;
+}
+
+.gift-item {
+
+    min-height:100px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:45px;
+
+    transition:.2s;
+}
+
+.gift-item:hover {
+
+    transform:
+        scale(1.05);
+}
+
+
+/* CODE */
+
+.code-input {
+
+    width:180px;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:
+        2px solid
+        #805cff;
+
+    background:#12091d;
+
+    color:white;
+
+    text-align:center;
+
+    font-size:28px;
+
+    outline:none;
+}
+
+
+/* SECRET */
+
+.secret-card {
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,0,190,.12),
+            rgba(0,220,255,.08)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+}
+
+
+/* FINAL */
+
+.final-title {
+
+    font-size:
+        clamp(45px,10vw,100px);
+
+    animation:
+        finalPulse
+        1.5s infinite alternate;
+}
+
+@keyframes finalPulse {
+
+    from {
+        transform:scale(1);
+    }
+
+    to {
+        transform:scale(1.04);
+    }
+}
+
+.big-photo {
+
+    width:
+        min(600px,95%);
+
+    margin:
+        25px auto;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    border:
+        3px solid
+        rgba(255,255,255,.3);
+
+    box-shadow:
+        0 20px 80px
+        rgba(255,50,200,.25);
+}
+
+.big-photo img {
+
+    width:100%;
+
+    display:block;
+}
+
+
+/* MUSIC */
+
+.music {
+
+    position:fixed;
+
+    top:15px;
+
+    right:15px;
+
+    z-index:200;
+
+    border:none;
+
+    border-radius:50%;
+
+    width:50px;
+
+    height:50px;
+
+    cursor:pointer;
+
+    background:
+        rgba(255,255,255,.12);
+
+    color:white;
+
+    font-size:22px;
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+/* SECRET CLICK */
+
+.secret-click {
+
+    cursor:pointer;
+
+    user-select:none;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .card {
+        padding:25px 16px;
+    }
+
+    .map {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .gift-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .brother-area {
+        height:280px;
+    }
+
+    .red-button {
+
+        width:150px;
+
+        height:150px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<button
+    class="music"
+    onclick="toggleMusic()">
+    🎵
+</button>
+
+
+<audio id="music" loop>
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<div id="particles"></div>
+
+
+<!-- ================= START ================= -->
+
+<section
+    id="screen1"
+    class="screen active">
+
+<div class="container">
+
+<div class="card">
+
+    <div style="font-size:70px;">
+        🎮
+    </div>
+
+    <h1>
+
+        <span class="gradient">
+            Сестра.exe
+        </span>
+
+    </h1>
+
+    <h2>
+        20 лет: система обновлена
+    </h2>
+
+    <p>
+
+        Добро пожаловать в секретную игру,
+        которую твой брат почему-то
+        решил сделать вместо нормального подарка 😂
+
+    </p>
+
+    <p>
+
+        Имя объекта:
+        <b>Олеся</b>
+
+        <br>
+
+        Возраст:
+        <b>20</b>
+
+        <br>
+
+        Настроение:
+        <b>99.9% позитив</b>
+
+        <br>
+
+        Способность дурачиться:
+        <b>∞</b>
+
+    </p>
+
+
+    <div class="meme" id="randomMeme">
+
+        Загрузка мемной информации...
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="startGame()">
+
+        🚀 НАЧАТЬ МИССИЮ
+
+    </button>
+
+
+    <p class="small">
+
+        Автор проекта:
+        <b>твой брат</b> 😎
+
+    </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MAP ================= -->
+
+<section
+    id="screen2"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <h2>
+        🗺️ Миссия: Олеся 20
+    </h2>
+
+    <p>
+
+        Пройди испытания.
+        Не пытайся найти кнопку выхода.
+        Её нет 😂
+
+    </p>
+
+
+    <div class="map">
+
+        <div
+            class="map-node active"
+            id="map1">
+
+            <span class="map-number">
+                1️⃣
+            </span>
+
+            Знакомство
+
+        </div>
+
+
+        <div
+            class="map-node"
+            id="map2">
+
+            <span class="map-number">
+                2️⃣
+            </span>
+
+            Позитив
+
+        </div>
+
+
+        <div
+            class="map-node"
+            id="map3">
+
+            <span class="map-number">
+                3️⃣
+            </span>
+
+            Братская проверка
+
+        </div>
+
+
+        <div
+            class="map-node"
+            id="map4">
+
+            <span class="map-number">
+                4️⃣
+            </span>
+
+            Фото
+
+        </div>
+
+
+        <div
+            class="map-node"
+            id="map5">
+
+            <span class="map-number">
+                5️⃣
+            </span>
+
+            Система
+
+        </div>
+
+
+        <div
+            class="map-node"
+            id="map6">
+
+            <span class="map-number">
+                6️⃣
+            </span>
+
+            Подарок
+
+        </div>
+
+
+        <div
+            class="map-node"
+            id="map7">
+
+            <span class="map-number">
+                7️⃣
+            </span>
+
+            Секрет
+
+        </div>
+
+
+        <div
+            class="map-node"
+            id="map8">
+
+            <span class="map-number">
+                8️⃣
+            </span>
+
+            Финал
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="goTo(3)">
+
+        ▶️ Продолжить
+
+    </button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= QUIZ ================= -->
+
+<section
+    id="screen3"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <div style="font-size:65px;">
+        🕵️
+    </div>
+
+    <h2>
+        Испытание №1
+    </h2>
+
+    <h3>
+        Кто главный главный человек сегодня?
+    </h3>
+
+
+    <button
+        class="btn option"
+        onclick="correctAnswer()">
+
+        👑 Олеся
+
+    </button>
+
+
+    <button
+        class="btn option secondary"
+        onclick="wrongAnswer()">
+
+        🐸 президент 
+
+    </button>
+
+
+    <button
+        class="btn option secondary"
+        onclick="wrongAnswer()">
+
+        🤖 Директор 
+
+    </button>
+
+
+    <p id="quizMessage"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= POSITIVITY ================= -->
+
+<section
+    id="screen4"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <div style="font-size:60px;">
+        😂
+    </div>
+
+    <h2>
+        Уровень позитивности
+    </h2>
+
+    <p>
+
+        Нажимай кнопку до тех пор,
+        пока система не признает:
+        ты слишком весёлая 😂
+
+    </p>
+
+
+    <div class="progress">
+
+        <div
+            class="progress-bar"
+            id="positiveBar">
+        </div>
+
+    </div>
+
+
+    <h2 id="positiveText">
+        0%
+    </h2>
+
+
+    <button
+        class="btn"
+        onclick="addPositive()">
+
+        😂 ДУРАЧИТЬСЯ!
+
+    </button>
+
+
+    <div
+        class="meme"
+        id="positiveMeme">
+
+        Нажми кнопку...
+
+    </div>
+
+
+    <p id="positiveDone"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= BROTHER TEST ================= -->
+
+<section
+    id="screen5"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <div style="font-size:60px;">
+        🧑‍💻
+    </div>
+
+    <h2>
+        Братская проверка
+    </h2>
+
+    <p>
+
+        Вопрос крайне важный.
+        От него зависит судьба человечества.
+
+    </p>
+
+    <h3>
+        Если брат говорит:
+        «Не трогай это» —
+        что нужно сделать?
+
+    </h3>
+
+
+    <button
+        class="btn option"
+        onclick="brotherAnswer(1)">
+
+        😇 Послушаться
+
+    </button>
+
+
+    <button
+        class="btn option"
+        onclick="brotherAnswer(2)">
+
+        😂 Конечно же потрогать
+
+    </button>
+
+
+    <button
+        class="btn option secondary"
+        onclick="brotherAnswer(3)">
+
+        🤔 Спросить «почему?»
+
+    </button>
+
+
+    <div
+        class="meme"
+        id="brotherMessage">
+
+        Ожидание ответа...
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= BROTHER GAME ================= -->
+
+<section
+    id="screen6"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <h2>
+        😂 ПОЙМАЙ БРАТА
+    </h2>
+
+    <p>
+
+        Брат решил сбежать от ответственности
+        за создание этого сайта.
+
+        Поймай его!
+
+    </p>
+
+
+    <div
+        class="brother-area"
+        id="brotherArea">
+
+        <button
+            class="brother-button"
+            id="brotherButton"
+            onclick="catchBrother()">
+
+            😂 ПОЙМАТЬ БРАТА
+
+        </button>
+
+    </div>
+
+
+    <p id="brotherCatchMessage"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= RED BUTTON ================= -->
+
+<section
+    id="screen7"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <h2>
+        🔴 Секретный эксперимент
+    </h2>
+
+    <p>
+        Брат оставил кнопку.
+    </p>
+
+    <h2>
+        НЕ НАЖИМАТЬ
+    </h2>
+
+
+    <div class="red-zone">
+
+        <button
+            class="red-button"
+            onclick="redButton()">
+
+            НЕ<br>
+            НАЖИМАТЬ
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="meme"
+        id="redMessage">
+
+        Ты действительно собираешься
+        её нажать?
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PHOTO ================= -->
+
+<section
+    id="screen8"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <h2>
+        📸 Архив Олеси
+    </h2>
+
+    <p>
+
+        Система обнаружила фотографии.
+
+        Брат решил ничего не удалять.
+
+        Пока 😂
+
+    </p>
+
+
+    <div class="photo-frame">
+
+        <img
+            id="storyPhoto"
+            src="photos/photo1.jpeg">
+
+    </div>
+
+
+    <div
+        class="photo-caption"
+        id="photoCaption">
+
+        Архивное фото №1
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="nextPhoto()">
+
+        📸 Следующая
+
+    </button>
+
+
+    <button
+        class="btn secondary"
+        onclick="goTo(9)">
+
+        ▶️ Дальше
+
+    </button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SYSTEM ================= -->
+
+<section
+    id="screen9"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <h2>
+        💻 SYSTEM DIAGNOSTIC
+    </h2>
+
+
+    <div
+        class="terminal"
+        id="terminal">
+
+        <div class="terminal-line">
+            > Инициализация...
+        </div>
+
+        <div class="terminal-line">
+            > Поиск пользователя...
+        </div>
+
+        <div class="terminal-line">
+            > Пользователь найден: Самая лучшая сестра на свете.
+        </div>
+
+        <div class="terminal-line">
+            > Возраст: 20
+        </div>
+
+        <div class="terminal-line">
+            > Позитивность: ОЧЕНЬ ВЫСОКАЯ
+        </div>
+
+        <div class="terminal-line">
+            > Уровень дурачества: КРИТИЧЕСКИЙ
+        </div>
+
+        <div class="terminal-line">
+            > Серьёзность: НЕ ОБНАРУЖЕНА
+        </div>
+
+        <div class="terminal-line">
+            > Брат: пытается сохранять спокойствие...
+        </div>
+
+        <div class="terminal-line">
+            > Ошибка: слишком много смеха 😂
+        </div>
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="goTo(10)">
+
+        🔓 Продолжить
+
+    </button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= GIFT ================= -->
+
+<section
+    id="screen10"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <h2>
+        🎁 Найди подарок
+    </h2>
+
+    <p>
+
+        Только один предмет настоящий.
+
+        Остальные просто хотят внимания 😂
+
+    </p>
+
+
+    <div class="gift-grid">
+
+        <div
+            class="gift-item"
+            onclick="wrongObject(this)">
+            🐸
+        </div>
+
+        <div
+            class="gift-item"
+            onclick="wrongObject(this)">
+            🍕
+        </div>
+
+        <div
+            class="gift-item"
+            onclick="wrongObject(this)">
+            🧦
+        </div>
+
+        <div
+            class="gift-item"
+            onclick="wrongObject(this)">
+            🐔
+        </div>
+
+        <div
+            class="gift-item"
+            onclick="findGift(this)">
+            🎁
+        </div>
+
+        <div
+            class="gift-item"
+            onclick="wrongObject(this)">
+            🥔
+        </div>
+
+    </div>
+
+
+    <p id="giftMessage"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CODE ================= -->
+
+<section
+    id="screen11"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <div style="font-size:65px;">
+        🔐
+    </div>
+
+    <h2>
+        Финальный замок
+    </h2>
+
+    <p>
+        Код состоит из возраста Олеси.
+    </p>
+
+
+    <input
+        id="codeInput"
+        class="code-input"
+        type="number"
+        placeholder="?">
+
+
+    <br>
+
+
+    <button
+        class="btn"
+        onclick="checkCode()">
+
+        🔓 ОТКРЫТЬ
+
+    </button>
+
+
+    <p id="codeMessage"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SECRET ================= -->
+
+<section
+    id="screen12"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <h2>
+        🌌 Секретная комната
+    </h2>
+
+
+    <div class="secret-card">
+
+        <div
+            style="font-size:65px;"
+            class="secret-click"
+            onclick="secretClick()">
+
+            ✨
+
+        </div>
+
+
+        <h3>
+            Ты нашла секретный уровень.
+        </h3>
+
+
+        <p>
+
+            Но брат решил спрятать
+            ещё кое-что.
+
+        </p>
+
+
+        <div
+            class="meme"
+            id="secretMessage">
+
+            Нажми на ✨
+
+        </div>
+
+
+        <div class="photo-frame">
+
+            <img
+                src="photos/photo8.jpg">
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="openFinal()">
+
+        ❤️ К ФИНАЛУ
+
+    </button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section
+    id="finalScreen"
+    class="screen">
+
+<div class="container">
+
+<div class="card">
+
+    <div style="font-size:80px;">
+        🎂🎉🎈
+    </div>
+
+
+    <div class="final-title gradient">
+
+        ОЛЕСЯ, 20! ❤️
+
+    </div>
+
+
+    <div class="big-photo">
+
+        <img
+            src="photos/photo1.jpeg">
+
+    </div>
+
+
+    <h2>
+        С ДНЁМ РОЖДЕНИЯ!
+    </h2>
+
+
+    <p>
+
+        20 лет — это только начало.
+
+    </p>
+
+
+    <p>
+
+        Оставайся такой же весёлой,
+        позитивной и немного сумасшедшей 😂
+
+    </p>
+
+
+    <p>
+
+        Пусть будет куча счастливых моментов,
+        путешествий, приключений,
+        хороших людей и поводов улыбаться.
+
+    </p>
+
+
+    <h2 class="gradient">
+
+        И главное —
+        никогда не переставай дурачиться ❤️
+
+    </h2>
+
+
+    <p>
+
+        <b>
+            От твоего брата ❤️
+        </b>
+
+    </p>
+
+
+    <button
+        class="btn"
+        onclick="bigParty()">
+
+        🎉 УСТРОИТЬ ПРАЗДНИК
+
+    </button>
+
+
+    <button
+        class="btn secondary"
+        onclick="showGallery()">
+
+        📸 Смотреть фотографии
+
+    </button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<script>
+
+
+/* =====================================
+   VARIABLES
+===================================== */
+
+const music =
+    document.getElementById("music");
+
+let currentScreen = 1;
+
+let positive = 0;
+
+let photoIndex = 1;
+
+let redClicks = 0;
+
+let brotherCaught = false;
+
+let secretClicks = 0;
+
+
+/* =====================================
+   MEMES
+===================================== */
+
+const memes = [
+
+    "😂 Система сообщает: Имениница обнаружена.",
+
+    "🧠 IQ проверен. Результат: слишком умная, чтобы сообщать.",
+
+    "🚨 Внимание: уровень дурачества превышает допустимый.",
+
+    "😂 Брат пытался сделать нормальный сайт. Не получилось.",
+
+    "🤖 Ошибка 404: серьёзность не найдена.",
+
+    "📢 Новости: Олеся снова смеётся.",
+
+    "💀 План на 20 лет: жить весело. Остальное разберём потом.",
+
+    "😂 Если ты это читаешь — ты уже слишком далеко зашла.",
+
+    "❤️ Братская система подтверждает: Олеся легенда."
+
+];
+
+
+function randomMeme() {
+
+    const meme =
+        memes[
+            Math.floor(
+                Math.random() * memes.length
+            )
+        ];
+
+    document.getElementById(
+        "randomMeme"
+    ).innerText = meme;
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+function goTo(number) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove("active");
+
+        });
+
+
+    let target;
+
+
+    if (number === "finalScreen") {
+
+        target =
+            document.getElementById(
+                "finalScreen"
+            );
+
+    } else {
+
+        target =
+            document.getElementById(
+                "screen" + number
+            );
+
+    }
+
+
+    if (target) {
+
+        target.classList.add("active");
+
+        currentScreen = number;
+
+    }
+
+
+    updateMap();
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+
+    startMusic();
+
+}
+
+
+/* =====================================
+   START
+===================================== */
+
+function startGame() {
+
+    startMusic();
+
+    partySmall();
+
+    randomMeme();
+
+
+    setTimeout(() => {
+
+        goTo(2);
+
+    },700);
+
+}
+
+
+/* =====================================
+   MAP
+===================================== */
+
+function updateMap() {
+
+    document
+        .querySelectorAll(".map-node")
+        .forEach(node => {
+
+            node.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if (
+        typeof currentScreen !==
+        "number"
+    ) return;
+
+
+    const mapId =
+        "map" +
+        Math.min(
+            Math.max(
+                currentScreen - 2,
+                1
+            ),
+            8
+        );
+
+
+    const active =
+        document.getElementById(
+            mapId
+        );
+
+
+    if (active) {
+
+        active.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   QUIZ
+===================================== */
+
+function correctAnswer() {
+
+    document.getElementById(
+        "quizMessage"
+    ).innerHTML =
+
+        "✅ Правильно! Другого ответа даже не рассматривали 😂";
+
+
+    document.getElementById(
+        "map1"
+    ).classList.add("done");
+
+
+    partySmall();
+
+
+    setTimeout(() => {
+
+        goTo(4);
+
+    },1200);
+
+}
+
+
+function wrongAnswer() {
+
+    document.getElementById(
+        "quizMessage"
+    ).innerHTML =
+
+        "❌ Нет 😂 Лягушка уже требует объяснений.";
+
+}
+
+
+/* =====================================
+   POSITIVE
+===================================== */
+
+const positiveMemes = [
+
+    "😂 Продолжай. Система ещё держится.",
+
+    "🤣 Я уже пожалел, что добавил эту кнопку.",
+
+    "🚨 Позитив превышает норму.",
+
+    "💀 Ещё немного — и сайт начнёт смеяться сам.",
+
+    "😂 Всё. Теперь официально слишком весело.",
+
+    "🤯 Система не готова к такому количеству дурачества.",
+
+    "🔥 100%?! Ну конечно. А ты сомневалась?"
+
+];
+
+
+function addPositive() {
+
+    positive += 10;
+
+
+    if (positive > 100) {
+
+        positive = 100;
+
+    }
+
+
+    document.getElementById(
+        "positiveBar"
+    ).style.width =
+        positive + "%";
+
+
+    document.getElementById(
+        "positiveText"
+    ).innerText =
+        positive + "%";
+
+
+    const meme =
+        positiveMemes[
+            Math.min(
+                Math.floor(
+                    positive / 10
+                ) - 1,
+                positiveMemes.length - 1
+            )
+        ];
+
+
+    document.getElementById(
+        "positiveMeme"
+    ).innerText = meme;
+
+
+    createEmoji("😂");
+
+
+    if (positive >= 100) {
+
+        document.getElementById(
+            "positiveDone"
+        ).innerHTML =
+
+            "🔥 КРИТИЧЕСКИЙ УРОВЕНЬ ПОЗИТИВА!";
+
+
+        document.getElementById(
+            "map2"
+        ).classList.add("done");
+
+
+        setTimeout(() => {
+
+            goTo(5);
+
+        },1000);
+
+    }
+
+}
+
+
+/* =====================================
+   BROTHER QUIZ
+===================================== */
+
+function brotherAnswer(answer) {
+
+    const message =
+        document.getElementById(
+            "brotherMessage"
+        );
+
+
+    if (answer === 1) {
+
+        message.innerText =
+            "😇 Ого. Правильный ответ! Брат гордится тобой.";
+
+    }
+
+
+    if (answer === 2) {
+
+        message.innerText =
+            "😂 Вот! А вот это уже похоже на правду. Брат знал, что ты так ответишь.";
+
+    }
+
+
+    if (answer === 3) {
+
+        message.innerText =
+            "🤔 Слишком разумно. Подозрительно.";
+
+    }
+
+
+    if (answer === 2) {
+
+        document.getElementById(
+            "map3"
+        ).classList.add("done");
+
+    }
+
+
+    setTimeout(() => {
+
+        goTo(6);
+
+        moveBrotherButton();
+
+    },1200);
+
+}
+
+
+/* =====================================
+   CATCH BROTHER
+===================================== */
+
+function moveBrotherButton() {
+
+    const area =
+        document.getElementById(
+            "brotherArea"
+        );
+
+    const button =
+        document.getElementById(
+            "brotherButton"
+        );
+
+
+    const maxX =
+        area.clientWidth -
+        button.offsetWidth -
+        10;
+
+
+    const maxY =
+        area.clientHeight -
+        button.offsetHeight -
+        10;
+
+
+    button.style.left =
+        Math.max(
+            5,
+            Math.random() * maxX
+        ) + "px";
+
+
+    button.style.top =
+        Math.max(
+            5,
+            Math.random() * maxY
+        ) + "px";
+
+}
+
+
+document.addEventListener(
+    "pointerover",
+    event => {
+
+        if (
+            event.target.id ===
+            "brotherButton"
+        ) {
+
+            if (!brotherCaught) {
+
+                moveBrotherButton();
+
+            }
+
+        }
+
+    }
+);
+
+
+function catchBrother() {
+
+    brotherCaught = true;
+
+
+    document.getElementById(
+        "brotherCatchMessage"
+    ).innerHTML =
+
+        "😂 ПОЙМАЛА! Всё, брат больше не сбегает.";
+
+
+    document.getElementById(
+        "map3"
+    ).classList.add("done");
+
+
+    partySmall();
+
+
+    setTimeout(() => {
+
+        goTo(7);
+
+    },1300);
+
+}
+
+
+/* =====================================
+   RED BUTTON
+===================================== */
+
+function redButton() {
+
+    redClicks++;
+
+
+    const messages = [
+
+        "😳 Я же сказал НЕ НАЖИМАТЬ!",
+
+        "😂 Стой.",
+
+        "🚨 Остановись.",
+
+        "🤨 Ты реально продолжаешь?",
+
+        "💀 Всё. Теперь отвечаешь за последствия.",
+
+        "😂 Брат официально сдаётся.",
+
+        "🎉 Ладно. Ты победила эту кнопку."
+
+    ];
+
+
+    document.getElementById(
+        "redMessage"
+    ).innerText =
+
+        messages[
+            Math.min(
+                redClicks - 1,
+                messages.length - 1
+            )
+        ];
+
+
+    partySmall();
+
+
+    if (redClicks >= 5) {
+
+        document.getElementById(
+            "map5"
+        ).classList.add("done");
+
+
+        setTimeout(() => {
+
+            goTo(8);
+
+        },1000);
+
+    }
+
+}
+
+
+/* =====================================
+   PHOTOS
+===================================== */
+
+const photos = [
+
+    {
+        file:"photos/photo1.jpeg",
+        caption:"📸 Фото №1 — начало расследования."
+    },
+
+    {
+        file:"photos/photo2.jpeg",
+        caption:"😂 Здесь брат уже начинает подозревать неладное."
+    },
+
+    {
+        file:"photos/photo3.jpeg",
+        caption:"✨ Просто Олеся."
+    },
+
+    {
+        file:"photos/photo4.jpeg",
+        caption:"🤣 Доказательство уровня дурачества."
+    },
+
+    {
+        file:"photos/photo5.jpeg",
+        caption:"❤️ Хорошее воспоминание."
+    },
+
+    {
+        file:"photos/photo6.jpg",
+        caption:"🔥 Легендарный момент."
+    },
+
+    {
+        file:"photos/photo7.jpeg",
+        caption:"😎 Без комментариев."
+    },
+
+    {
+        file:"photos/photo8.jpg",
+        caption:"🌌 Секретное воспоминание."
+    }
+
+];
+
+
+function nextPhoto() {
+
+    photoIndex++;
+
+
+    if (
+        photoIndex >
+        photos.length
+    ) {
+
+        photoIndex = 1;
+
+    }
+
+
+    const photo =
+        photos[
+            photoIndex - 1
+        ];
+
+
+    document.getElementById(
+        "storyPhoto"
+    ).src =
+        photo.file;
+
+
+    document.getElementById(
+        "photoCaption"
+    ).innerText =
+        photo.caption;
+
+
+    createEmoji("📸");
+
+}
+
+
+/* =====================================
+   GIFT
+===================================== */
+
+function wrongObject(element) {
+
+    element.style.transform =
+        "rotate(15deg) scale(1.1)";
+
+
+    const messages = [
+
+        "❌ Нет 😂",
+
+        "❌ Мимо!",
+
+        "😂 Даже близко.",
+
+        "🤨 Ты серьёзно выбрала картошку?",
+
+        "🧦 Носок был бы неплохим подарком.",
+
+        "🐔 Курица тоже не согласилась."
+
+    ];
+
+
+    document.getElementById(
+        "giftMessage"
+    ).innerText =
+
+        messages[
+            Math.floor(
+                Math.random() *
+                messages.length
+            )
+        ];
+
+
+    setTimeout(() => {
+
+        element.style.transform = "";
+
+    },300);
+
+}
+
+
+function findGift(element) {
+
+    element.innerText = "💎";
+
+
+    document.getElementById(
+        "giftMessage"
+    ).innerText =
+
+        "🎉 ТЫ НАШЛА ПОДАРОК!";
+
+
+    document.getElementById(
+        "map6"
+    ).classList.add("done");
+
+
+    partySmall();
+
+
+    setTimeout(() => {
+
+        goTo(11);
+
+    },1200);
+
+}
+
+
+/* =====================================
+   CODE
+===================================== */
+
+function checkCode() {
+
+    const code =
+        document.getElementById(
+            "codeInput"
+        ).value;
+
+
+    if (code === "20") {
+
+        document.getElementById(
+            "codeMessage"
+        ).innerText =
+
+            "🔓 ДОСТУП РАЗРЕШЁН! Брат одобряет.";
+
+
+        partySmall();
+
+
+        setTimeout(() => {
+
+            goTo(12);
+
+        },1000);
+
+
+    } else {
+
+        document.getElementById(
+            "codeMessage"
+        ).innerText =
+
+            "❌ Неверно 😂 Подсказка: тебе 20!";
+
+    }
+
+}
+
+
+/* =====================================
+   SECRET
+===================================== */
+
+function secretClick() {
+
+    secretClicks++;
+
+
+    const messages = [
+
+        "✨ Обычная звезда.",
+
+        "🤨 нажми еще раз",
+
+        "😂 Тут явно что-то спрятано.",
+
+        "🚨 СЕКРЕТ ОБНАРУЖЕН!",
+
+        "❤️ Ладно. Ты нашла послание от меня: я тебя люблю сестренка!❤️"
+
+    ];
+
+
+    document.getElementById(
+        "secretMessage"
+    ).innerText =
+
+        messages[
+            Math.min(
+                secretClicks - 1,
+                messages.length - 1
+            )
+        ];
+
+
+    createEmoji("✨");
+
+}
+
+
+/* =====================================
+   FINAL
+===================================== */
+
+function openFinal() {
+
+    document.getElementById(
+        "map7"
+    ).classList.add("done");
+
+
+    goTo("finalScreen");
+
+
+    bigParty();
+
+}
+
+
+function showGallery() {
+
+    goTo(8);
+
+}
+
+
+/* =====================================
+   MUSIC
+===================================== */
+
+function startMusic() {
+
+    music.volume = .35;
+
+    music.play().catch(
+        () => {}
+    );
+
+}
+
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play().catch(
+            () => {}
+        );
+
+        document.querySelector(
+            ".music"
+        ).innerText = "🎵";
+
+    } else {
+
+        music.pause();
+
+        document.querySelector(
+            ".music"
+        ).innerText = "🔇";
+
+    }
+
+}
+
+
+/* =====================================
+   PARTICLES
+===================================== */
+
+const emojis = [
+
+    "🎉",
+    "🎈",
+    "❤️",
+    "😂",
+    "✨",
+    "🎂",
+    "💜",
+    "🥳",
+    "🤣",
+    "😎"
+
+];
+
+
+function createEmoji(custom) {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+
+    element.className =
+        "particle";
+
+
+    element.innerText =
+        custom ||
+        emojis[
+            Math.floor(
+                Math.random() *
+                emojis.length
+            )
+        ];
+
+
+    element.style.left =
+        Math.random() *
+        100 +
+        "vw";
+
+
+    element.style.top =
+        Math.random() *
+        100 +
+        "vh";
+
+
+    element.style.setProperty(
+        "--x",
+        Math.random()
+    );
+
+
+    element.style.setProperty(
+        "--y",
+        Math.random()
+    );
+
+
+    document
+        .getElementById(
+            "particles"
+        )
+        .appendChild(
+            element
+        );
+
+
+    setTimeout(() => {
+
+        element.remove();
+
+    },1800);
+
+}
+
+
+function partySmall() {
+
+    for (
+        let i = 0;
+        i < 12;
+        i++
+    ) {
+
+        setTimeout(() => {
+
+            createEmoji();
+
+        },i * 50);
+
+    }
+
+}
+
+
+function bigParty() {
+
+    startMusic();
+
+
+    for (
+        let i = 0;
+        i < 80;
+        i++
+    ) {
+
+        setTimeout(() => {
+
+            createEmoji();
+
+        },i * 25);
+
+    }
+
+}
+
+
+/* =====================================
+   RANDOM MEME START
+===================================== */
+
+randomMeme();
+
+
+/* =====================================
+   MUSIC FIRST TOUCH
+===================================== */
+
+document.addEventListener(
+
+    "pointerdown",
+
+    () => {
+
+        startMusic();
+
+    },
+
+    {
+        once:true
+    }
+
+);
+
+</script>
+
+</body>
+</html>
